@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -16,39 +15,51 @@
     <packaging>war</packaging>
 
     <properties>
-
         <maven.compiler.source>21</maven.compiler.source>
-
         <maven.compiler.target>21</maven.compiler.target>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        <junit.version>5.10.2</junit.version>
     </properties>
 
-    <build>
+    <dependencies>
 
-        <finalName>war-demo</finalName>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
 
         <plugins>
 
             <plugin>
-
                 <groupId>org.apache.maven.plugins</groupId>
-
                 <artifactId>maven-war-plugin</artifactId>
-
                 <version>3.4.0</version>
+            </plugin>
 
-                <configuration>
-
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-
-                </configuration>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
             </plugin>
 
         </plugins>
 
     </build>
+
+    <distributionManagement>
+
+        <repository>
+            <id>jfrog</id>
+            <name>JFrog Artifactory Cloud</name>
+            <url>https://trial57pdoi.jfrog.io/artifactory/api/maven/war-demo-maven-local</url>
+        </repository>
+
+    </distributionManagement>
 
 </project>
